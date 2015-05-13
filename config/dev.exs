@@ -29,6 +29,5 @@ config :logger, :console, format: "[$level] $message\n"
 # Configure your database
 config :phitter, Phitter.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "meatherly",
   database: "phitter_dev"
