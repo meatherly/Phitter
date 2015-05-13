@@ -1,0 +1,6 @@
+<h2>Edit pheet</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: pheet_path(@conn, :update, @pheet) %>
+
+<%= link "Back", to: pheet_path(@conn, :index) %>

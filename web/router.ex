@@ -20,6 +20,7 @@ defmodule Phitter.Router do
     get "/registration", RegistrationController, :new
     post "/registration", RegistrationController, :create
     get "/pages", PageController, :index
+    resources "/pheets", PheetController
   end
 
   # Other scopes may use custom stacks.
