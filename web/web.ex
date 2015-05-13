@@ -26,6 +26,8 @@ defmodule Phitter.Web do
     quote do
       use Phoenix.Controller
 
+      alias Phitter.User
+
       # Alias the data repository and import query/model functions
       alias Phitter.Repo
       import Ecto.Model
