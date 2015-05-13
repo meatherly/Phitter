@@ -15,9 +15,11 @@ defmodule Phitter.Router do
   scope "/", Phitter do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", SessionController, :new
+    post "/login", SessionController, :create
     get "/registration", RegistrationController, :new
     post "/registration", RegistrationController, :create
+    get "/pages", PageController, :index
   end
 
   # Other scopes may use custom stacks.
