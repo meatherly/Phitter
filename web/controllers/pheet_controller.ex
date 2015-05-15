@@ -3,7 +3,7 @@ defmodule Phitter.PheetController do
 
   alias Phitter.Pheet
 
-  plug :get_current_user
+  plug Phitter.Plug.Authenticate
   plug :scrub_params, "pheet" when action in [:create, :update]
   plug :action
 
@@ -64,10 +64,5 @@ defmodule Phitter.PheetController do
     conn
     |> put_flash(:info, "Pheet deleted successfully.")
     |> redirect(to: pheet_path(conn, :index))
-  end
-
-  def get_current_user(conn, _) do
-      user = get_session(conn, :current_user)
-      assign(conn, :current_user, user)
   end
 end

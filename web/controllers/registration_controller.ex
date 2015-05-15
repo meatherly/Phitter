@@ -13,15 +13,14 @@ defmodule Phitter.RegistrationController do
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
     if changeset.valid? do
-      new_user = Repo.insert(changeset)
+      new_user = Phitter.Password.generate_password_and_store_user(changeset)
 
       conn
-      |> put_flash(:info, "Successfully registered and logged in")
-      |> put_session(:current_user, new_user)
-      |> redirect(to: registration_path(conn, :new))
+        |> put_flash(:info, "Successfully registered and logged in")
+        |> put_session(:current_user, new_user)
+        |> redirect(to: registration_path(conn, :new))
     else
       render conn, "new.html", changeset: changeset
     end
   end
-
 end

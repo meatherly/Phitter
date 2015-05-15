@@ -24,3 +24,5 @@
 </table>
 
 <%= link "New pheet", to: pheet_path(@conn, :new) %>
+
+<%= link "Logout", to: session_path(@conn, :delete) %>

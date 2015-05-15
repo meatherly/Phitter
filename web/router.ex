@@ -17,8 +17,10 @@ defmodule Phitter.Router do
 
     get "/", SessionController, :new
     post "/login", SessionController, :create
+    get "/logout", SessionController, :delete
     get "/registration", RegistrationController, :new
     post "/registration", RegistrationController, :create
+
     get "/pages", PageController, :index
     resources "/pheets", PheetController
   end

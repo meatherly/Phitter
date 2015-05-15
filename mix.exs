@@ -18,7 +18,7 @@ defmodule Phitter.Mixfile do
   def application do
     [mod: {Phitter, []},
      applications: [:phoenix, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :comeonin]]
   end
 
   # Specifies which paths to compile per environment
@@ -33,6 +33,7 @@ defmodule Phitter.Mixfile do
      {:phoenix_ecto, "~> 0.3"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_live_reload, "~> 0.3"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:comeonin, "~> 0.10"}]
   end
 end

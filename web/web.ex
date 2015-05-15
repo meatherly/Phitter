@@ -32,6 +32,7 @@ defmodule Phitter.Web do
       alias Phitter.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
+      import Phitter.Plug.Authenticate
 
       # Import URL helpers from the router
       import Phitter.Router.Helpers
