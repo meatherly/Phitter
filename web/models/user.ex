@@ -2,6 +2,7 @@ defmodule Phitter.User do
   use Phitter.Web, :model
 
   schema "users" do
+    has_many :pheets, Phitter.Pheet
     field :username, :string
     field :encrypted_password, :string
     field :password, :string, virtual: true

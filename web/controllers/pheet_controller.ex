@@ -8,7 +8,8 @@ defmodule Phitter.PheetController do
   plug :action
 
   def index(conn, _params) do
-    pheets = Repo.all(Pheet)
+    pheets = Repo.all from p in Pheet,
+      preload: [:user]
     render(conn, "index.html", pheets: pheets)
   end
 
@@ -18,7 +19,8 @@ defmodule Phitter.PheetController do
   end
 
   def create(conn, %{"pheet" => pheet_params}) do
-    changeset = Pheet.changeset(%Pheet{}, pheet_params)
+    new_pheet = build(conn.assigns.current_user, :pheets)
+    changeset = Pheet.changeset(new_pheet, pheet_params)
 
     if changeset.valid? do
       Repo.insert(changeset)

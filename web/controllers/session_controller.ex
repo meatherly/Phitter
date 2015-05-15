@@ -9,7 +9,13 @@ defmodule Phitter.SessionController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    Repo.get_by(User, username: user_params["username"])
+    user = if is_nil(user_params["username"]) do
+      nil
+    else
+      Repo.get_by(User, username: user_params["username"])
+    end
+
+    user
       |> sign_in(user_params["password"], conn)
   end
 

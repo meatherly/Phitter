@@ -1,28 +1,23 @@
-<h2>Listing pheets</h2>
-<h3>Hello <%= @current_user.username %></h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Body</th>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for pheet <- @pheets do %>
-    <tr>
-      <td><%= pheet.body %></td>
+<div>
+  Hello, <%= @current_user.username %> <%= link "Logout", to: session_path(@conn, :delete) %>
+</div>
 
-      <td class="text-right">
-        <%= link "Show", to: pheet_path(@conn, :show, pheet), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: pheet_path(@conn, :edit, pheet), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: pheet_path(@conn, :delete, pheet), method: :delete, class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+<div class="text-center">
+  <%= link "New pheet", to: pheet_path(@conn, :new), class: "btn btn-primary " %>
+</div>
 
-<%= link "New pheet", to: pheet_path(@conn, :new) %>
 
-<%= link "Logout", to: session_path(@conn, :delete) %>
+
+<div id="pheets-wrapper">
+  <%= for pheet <- @pheets do %>
+      <div class="pheet">
+        <div class="pheet-author">
+          <%= pheet.body %>
+        </div>
+        <div class="pheet-author">
+          - <%= pheet.user.username %>
+        </div>
+      </div>
+  <% end %>
+</div>
