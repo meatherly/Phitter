@@ -14,7 +14,7 @@ defmodule Phitter.Password do
   @doc """
     Generates the password for the changeset and then stores it to the database.
   """
-  def generate_password_and_store_user(changeset) do
+  def generate_password_and_store(changeset) do
     changeset
       |> generate_password
       |> Repo.insert
